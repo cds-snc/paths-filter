@@ -107,14 +107,12 @@ For more information, see [CHANGELOG](https://github.com/dorny/paths-filter/blob
     # introduced by the current branch are considered.
     # All files are considered as added if there is no common ancestor with
     # base branch or no previous commit.
-    # This option is ignored if action is triggered by pull_request event.
     # Default: repository default branch (e.g. master)
     base: ''
 
     # Git reference (e.g. branch name) from which the changes will be detected.
     # Useful when workflow can be triggered only on the default branch (e.g. repository_dispatch event)
     # but you want to get changes on a different branch.
-    # This option is ignored if action is triggered by pull_request event.
     # default: ${{ github.ref }}
     ref:
 
