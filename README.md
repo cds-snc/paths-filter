@@ -25,7 +25,7 @@ don't allow this because they don't work on a level of individual jobs or steps.
   - The `base` input parameter must not be the same as the branch that triggered the workflow
   - Changes are detected against the merge-base with the configured base branch or the default branch
   - Uses git commands to detect changes - repository must be already [checked out](https://github.com/actions/checkout)
-- **Master, Release, or other long-lived branches:**
+- **Main, Release, or other long-lived branches:**
   - Workflow triggered by **[push](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#push)** event
   when `base` input parameter is the same as the branch that triggered the workflow:
     - Changes are detected against the most recent commit on the same branch before the push
@@ -107,7 +107,7 @@ For more information, see [CHANGELOG](https://github.com/dorny/paths-filter/blob
     # introduced by the current branch are considered.
     # All files are considered as added if there is no common ancestor with
     # base branch or no previous commit.
-    # Default: repository default branch (e.g. master)
+    # Default: repository default branch (e.g. main)
     base: ''
 
     # Git reference (e.g. branch name) from which the changes will be detected.
@@ -288,7 +288,7 @@ jobs:
 on:
   pull_request:
     branches: # PRs to the following branches will trigger the workflow
-      - master
+      - main
       - develop
 jobs:
   build:
@@ -336,7 +336,7 @@ jobs:
 on:
   push:
     branches: # Push to the following branches will trigger the workflow
-      - master
+      - main
       - develop
       - release/**
 jobs:
@@ -348,7 +348,7 @@ jobs:
       id: filter
       with:
         # Use context to get the branch where commits were pushed.
-        # If there is only one long-lived branch (e.g. master),
+        # If there is only one long-lived branch (e.g. main),
         # you can specify it directly.
         # If it's not configured, the repository default branch is used.
         base: ${{ github.ref }}
@@ -364,7 +364,7 @@ jobs:
 on:
   push:
     branches: # Push to following branches will trigger the workflow
-      - master
+      - main
       - develop
       - release/**
 jobs:
